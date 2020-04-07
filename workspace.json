@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "projects": {
+    "backend": {
+      "root": "apps/backend",
+      "sourceRoot": "apps/backend/src",
+      "projectType": "application",
+      "prefix": "backend",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/backend",
+            "main": "apps/backend/src/main.ts",
+            "tsConfig": "apps/backend/tsconfig.app.json",
+            "assets": ["apps/backend/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/backend/src/environments/environment.ts",
+                  "with": "apps/backend/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "backend:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/backend/.eslintrc",
+            "tsConfig": [
+              "apps/backend/tsconfig.app.json",
+              "apps/backend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/backend/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/backend/jest.config.js",
+            "tsConfig": "apps/backend/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "user": {
+      "root": "libs/user",
+      "sourceRoot": "libs/user/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/user/tsconfig.lib.json",
+              "libs/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/user/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/user/jest.config.js",
+            "tsConfig": "libs/user/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "front-component": {
+      "root": "libs/front-component",
+      "sourceRoot": "libs/front-component/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/front-component/.eslintrc",
+            "tsConfig": [
+              "libs/front-component/tsconfig.lib.json",
+              "libs/front-component/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/front-component/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/front-component/jest.config.js",
+            "tsConfig": "libs/front-component/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/front-component/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/front-component",
+            "config": {
+              "configFolder": "libs/front-component/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "front-component-e2e": {
+      "root": "apps/front-component-e2e",
+      "sourceRoot": "apps/front-component-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/front-component-e2e/cypress.json",
+            "tsConfig": "apps/front-component-e2e/tsconfig.e2e.json",
+            "devServerTarget": "front-component:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "front-component:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/front-component-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/front-component-e2e/**"]
+          }
+        }
+      }
+    },
+    "frontend": {
+      "root": "apps/frontend",
+      "sourceRoot": "apps/frontend",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "options": {
+            "root": "apps/frontend",
+            "outputPath": "dist/apps/frontend"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/environments/environment.ts",
+                  "with": "apps/frontend/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:dev-server",
+          "options": {
+            "buildTarget": "frontend:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "frontend:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "frontend:build:production"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/frontend/.eslintrc",
+            "tsConfig": [
+              "apps/frontend/tsconfig.json",
+              "apps/frontend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/frontend/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/jest.config.js",
+            "tsConfig": "apps/frontend/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-e2e": {
+      "root": "apps/frontend-e2e",
+      "sourceRoot": "apps/frontend-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/frontend-e2e/cypress.json",
+            "tsConfig": "apps/frontend-e2e/tsconfig.e2e.json",
+            "devServerTarget": "frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/frontend-e2e/.eslintrc",
+            "tsConfig": ["apps/frontend-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "frontend"
+}

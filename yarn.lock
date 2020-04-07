@@ -111,11 +111,6 @@
     ora "4.0.3"
     rxjs "6.5.4"
 
-"@angular/forms@*":
-  version "9.1.0"
-  resolved "https://registry.npm.taobao.org/@angular/forms/download/@angular/forms-9.1.0.tgz#de14e34aa37bd41a28f93fee8666cd7f6393078c"
-  integrity sha1-3hTjSqN71Boo+T/uhmbNf2OTB4w=
-
 "@babel/code-frame@7.5.5":
   version "7.5.5"
   resolved "https://registry.npm.taobao.org/@babel/code-frame/download/@babel/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -2047,24 +2042,6 @@
     core-js "^3.0.1"
     global "^4.3.2"
     util-deprecate "^1.0.2"
-
-"@storybook/angular@5.3.9":
-  version "5.3.9"
-  resolved "https://registry.npm.taobao.org/@storybook/angular/download/@storybook/angular-5.3.9.tgz#edace0abe32445ab4b565c013681177d168f0785"
-  integrity sha1-7azgq+MkRatLVlwBNoEXfRaPB4U=
-  dependencies:
-    "@storybook/addons" "5.3.9"
-    "@storybook/core" "5.3.9"
-    "@storybook/node-logger" "5.3.9"
-    "@types/webpack-env" "^1.15.0"
-    core-js "^3.0.1"
-    fork-ts-checker-webpack-plugin "^3.0.1"
-    global "^4.3.2"
-    regenerator-runtime "^0.13.3"
-    sass-loader "^8.0.0"
-    strip-json-comments "^3.0.1"
-    ts-loader "^6.0.1"
-    tsconfig-paths-webpack-plugin "^3.2.0"
 
 "@storybook/api@5.3.9":
   version "5.3.9"
@@ -7586,7 +7563,7 @@ fork-ts-checker-webpack-plugin@1.5.0:
     tapable "^1.0.0"
     worker-rpc "^0.1.0"
 
-fork-ts-checker-webpack-plugin@3.1.1, fork-ts-checker-webpack-plugin@^3.0.1, fork-ts-checker-webpack-plugin@^3.1.1:
+fork-ts-checker-webpack-plugin@3.1.1, fork-ts-checker-webpack-plugin@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npm.taobao.org/fork-ts-checker-webpack-plugin/download/fork-ts-checker-webpack-plugin-3.1.1.tgz#a1642c0d3e65f50c2cc1742e9c0a80f441f86b19"
   integrity sha1-oWQsDT5l9QwswXQunAqA9EH4axk=
@@ -10376,7 +10353,7 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-micromatch@^4.0.0, micromatch@^4.0.2:
+micromatch@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npm.taobao.org/micromatch/download/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
   integrity sha1-T8sJmb+fvC/L3SEvbWKbmlbDklk=
@@ -12825,7 +12802,7 @@ react-is@16.8.6:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha1-W7weLSkUHJ+9/tRWND/ivEMKahY=
 
-react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.12.0, react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
@@ -13566,7 +13543,7 @@ rxjs@6.5.4:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.3.3, rxjs@^6.4.0, rxjs@^6.5.3, rxjs@^6.5.4:
+rxjs@^6.0.0, rxjs@^6.3.3, rxjs@^6.4.0, rxjs@^6.5.3, rxjs@^6.5.4:
   version "6.5.5"
   resolved "https://registry.npm.taobao.org/rxjs/download/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
   integrity sha1-xciE4wlMjP7jG/J+uH5UzPyH+ew=
@@ -13626,7 +13603,7 @@ sass-loader@7.2.0:
     pify "^4.0.1"
     semver "^5.5.0"
 
-sass-loader@8.0.2, sass-loader@^8.0.0:
+sass-loader@8.0.2:
   version "8.0.2"
   resolved "https://registry.npm.taobao.org/sass-loader/download/sass-loader-8.0.2.tgz#debecd8c3ce243c76454f2e8290482150380090d"
   integrity sha1-3r7NjDziQ8dkVPLoKQSCFQOACQ0=
@@ -15019,17 +14996,6 @@ ts-loader@5.4.5, ts-loader@^5.3.1:
     micromatch "^3.1.4"
     semver "^5.0.1"
 
-ts-loader@^6.0.1:
-  version "6.2.2"
-  resolved "https://registry.npm.taobao.org/ts-loader/download/ts-loader-6.2.2.tgz?cache=0&sync_timestamp=1584892608395&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fts-loader%2Fdownload%2Fts-loader-6.2.2.tgz#dffa3879b01a1a1e0a4b85e2b8421dc0dfff1c58"
-  integrity sha1-3/o4ebAaGh4KS4XiuEIdwN//HFg=
-  dependencies:
-    chalk "^2.3.0"
-    enhanced-resolve "^4.0.0"
-    loader-utils "^1.0.2"
-    micromatch "^4.0.0"
-    semver "^6.0.0"
-
 ts-node@~7.0.0:
   version "7.0.1"
   resolved "https://registry.npm.taobao.org/ts-node/download/ts-node-7.0.1.tgz#9562dc2d1e6d248d24bc55f773e3f614337d9baf"
@@ -15049,7 +15015,7 @@ ts-pnp@^1.1.2:
   resolved "https://registry.npm.taobao.org/ts-pnp/download/ts-pnp-1.2.0.tgz?cache=0&sync_timestamp=1585245753622&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fts-pnp%2Fdownload%2Fts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha1-pQCtCEsHmPHDBxrzkeZZEshrypI=
 
-tsconfig-paths-webpack-plugin@3.2.0, tsconfig-paths-webpack-plugin@^3.2.0:
+tsconfig-paths-webpack-plugin@3.2.0:
   version "3.2.0"
   resolved "https://registry.npm.taobao.org/tsconfig-paths-webpack-plugin/download/tsconfig-paths-webpack-plugin-3.2.0.tgz#6e70bd42915ad0efb64d3385163f0c1270f3e04d"
   integrity sha1-bnC9QpFa0O+2TTOFFj8MEnDz4E0=
